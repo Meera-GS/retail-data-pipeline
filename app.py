@@ -1,5 +1,6 @@
 # Load the runtime properties
 import sys
+from util import get_tables
 
 from config import DB_DETAILS
 #from read import read_table
@@ -10,7 +11,10 @@ from config import DB_DETAILS
 def main():
     env = sys.argv[1]
     db_details = DB_DETAILS[env]
-    print (db_details)
+
+    tables = get_tables('table_list')
+    for table in tables["table_name"]:
+        print(table)
 
 # read the data from retail_db
 '''df = read_table(db_details, 'orders', limit=10)
